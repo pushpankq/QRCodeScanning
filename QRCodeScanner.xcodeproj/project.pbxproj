@@ -296,7 +296,7 @@
 				DEVELOPMENT_TEAM = J4MFZ26949;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "I need to use camera";
+				INFOPLIST_KEY_NSCameraUsageDescription = "QRCodeScanner neet to access your camera to scan QRCode";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -327,7 +327,7 @@
 				DEVELOPMENT_TEAM = J4MFZ26949;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "I need to use camera";
+				INFOPLIST_KEY_NSCameraUsageDescription = "QRCodeScanner neet to access your camera to scan QRCode";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

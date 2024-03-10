@@ -16,12 +16,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCamera()
-        
         previewView.layer.borderColor = UIColor.white.cgColor
         previewView.layer.borderWidth = 3
-
     }
-
 }
 
 private extension ViewController {
@@ -29,7 +26,7 @@ private extension ViewController {
     func setUpCamera() {
         
         guard let device = AVCaptureDevice.default(for: .video) else {
-            print("videoNotSupported", QRScannerError.videoNotSupported)
+            showAlert(message: QRScannerError.videoNotSupported.rawValue)
             return
         }
         
@@ -37,12 +34,11 @@ private extension ViewController {
             let input = try AVCaptureDeviceInput(device: device)
             
             guard session.canAddInput(input) else {
-                print("cannotAddSessionCaptureDeviceInput ", QRScannerError.cannotAddSessionCaptureDeviceInput)
+                showAlert(message: QRScannerError.cannotAddSessionCaptureDeviceInput.rawValue)
                 return
             }
             
             session.addInput(input)
-            
             
             let output = AVCaptureMetadataOutput()
             output.setMetadataObjectsDelegate(self, queue: .main)
@@ -68,8 +64,17 @@ private extension ViewController {
             }
 
         } catch  {
-            print("error ", QRScannerError.unableToCrateCaptureDeviceInput)
+            self.showAlert(message: QRScannerError.unableToCreateCaptureDeviceInput.rawValue)
         }
+    }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "failed", message: message, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            self.dismiss(animated: true)
+        }
+        alertController.addAction(action1)
+        present(alertController, animated: true)
     }
 }
 
@@ -82,8 +87,8 @@ extension ViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
 }
 
-enum QRScannerError {
-    case videoNotSupported
-    case unableToCrateCaptureDeviceInput
-    case cannotAddSessionCaptureDeviceInput
+enum QRScannerError: String {
+    case videoNotSupported = "video Not Supported"
+    case unableToCreateCaptureDeviceInput = "unable To Create Capture Device Input"
+    case cannotAddSessionCaptureDeviceInput = "cannot Add Session Capture Device Input"
 }
